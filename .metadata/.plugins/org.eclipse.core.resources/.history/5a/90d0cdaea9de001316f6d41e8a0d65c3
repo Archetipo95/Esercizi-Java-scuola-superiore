@@ -1,0 +1,28 @@
+package Google;
+/**
+ * 
+ * @author Daniele Garrone,Nicola Zecchin
+ * 12/04/2014
+ * Classe per immagini google maps
+ */
+import java.net.*;
+import javax.swing.*;
+import java.awt.*;
+public class PannelloImmagini extends JPanel{
+	URL url;
+	
+	
+	public PannelloImmagini(URL url){
+		this.url = url;
+		setPreferredSize(new Dimension(600,600));
+	}
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		if(url != null){
+			Image imma = new ImageIcon(url).getImage();
+			g.drawImage(imma,0,0,null);
+		}
+		
+	}
+	
+}

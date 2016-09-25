@@ -1,0 +1,59 @@
+package PingPong;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Toolkit;
+import java.util.Vector;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class MainPong extends JPanel {
+	
+	private static final long serialVersionUID = 1L;
+	private static String titolo = "PingPong";
+	private static int width = 600;
+	private static int height = width / 16 * 9;
+	
+	
+	private Vector<Palla> palline;
+	private Palla palla;
+	
+	public MainPong() {
+		palline = new Vector<Palla>();
+		
+	}
+	
+	public void addPallina(){
+		palla = new Palla(this, width, height);
+		palline.add(palla);
+		
+	}
+	
+	public void paintComponent(Graphics g){
+		super.paintComponent(g);
+		
+		for(Palla p:palline)
+			p.disegna(g);
+			
+	}
+	
+	public static void main(String[] args) {
+		JFrame frame = new JFrame(titolo);
+		
+		Container c = frame.getContentPane();
+		MainPong pannello = new MainPong();
+		
+		for(int i=0; i<1; ++i)
+			pannello.addPallina();
+		c.add(pannello);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(width, height);
+		frame.setLocationRelativeTo(null);
+		frame.setResizable(false);
+		frame.setVisible(true);
+		
+	}
+}

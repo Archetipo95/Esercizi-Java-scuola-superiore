@@ -1,0 +1,4 @@
+1#Verdi#Giuseppe#Via Palazzi 2 - 35030 Padova#4512457856#verdi.giu@libero.it#05/03/1934
+2#Bianchi#Paolo#Via Chiesa 23 - 33036 Sabbioni#339145452#bianchiz.paulo@gmail.com#05/12/1956
+3#Rossi#Pipppo#Via Calcolo 12 - 36100 Vicenza#3397021232#Pippo_Rossi@yahoo.com#08/06/1940
+4#Lollo#Figo#Via Sistemi 90 - 36521 Trollo#3124576895#lollo_trollo@gmail.com#09/08/1960

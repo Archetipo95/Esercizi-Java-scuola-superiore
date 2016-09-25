@@ -1,0 +1,239 @@
+package PingPongRete2;
+
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+/**
+ * 
+ * @author 4ai Masevski Fipponi
+ *
+ */
+
+public class AnimationPannel extends JPanel implements Runnable, KeyListener{
+	private static final long serialVersionUID = 1L;
+
+	private ServerPong frame;
+	private Thread th;
+	private int xBall;
+	private int yBall;
+	private int sizeBall = 20;
+	private int deltaBallX = 5;
+	private int deltaBallY = 2;
+	private int xPong1;
+	private int yPong1;
+	private int xPong2;
+	private int yPong2;
+	private int widthPong = 10;
+	private int heightPong = 100;
+	private int deltaPong = 3;
+	private boolean upPong1, downPong1, upPong2, downPong2;
+	private int point1 = 0, point2 = 0;
+	private boolean inGame = true, wait = false;
+	private boolean win1 = false, win2 = false;
+	private int victoryPoint = 100;
+
+
+	public AnimationPannel(ServerPong frame,Dimension dimension) {
+		super();
+		this.frame = frame;
+		this.setSize(dimension);
+		xBall = frame.getWidth()/2 - sizeBall/2;
+		yBall = frame.getHeight()/2 - sizeBall/2;
+		xPong1 = 10;
+		yPong1 = (frame.getHeight() / 2) - (heightPong / 2);
+		xPong2 = frame.getWidth() - xPong1 - widthPong;
+		yPong2= (frame.getHeight() / 2) - (heightPong / 2);
+		upPong1 = false;
+		downPong1 = false;
+		upPong2 = false;
+		downPong2 = false;
+		frame.addKeyListener(this);
+//		th = new Thread(this);
+//		th.start();
+	}
+
+	public void run() {
+		
+		
+		while(inGame) {
+			while(!wait) {
+				try {
+					Thread.sleep(16);
+				} catch (InterruptedException e) {
+					System.out.println(e);
+				}
+				moveBall();
+				movePong();
+				send();
+				receive();
+				checkVictory();
+				repaint();
+			}
+			send();
+			receive();
+		}
+	}
+
+	public void receive() {
+		try {		
+			upPong2 = frame.getInput().readBoolean();
+			downPong2 = frame.getInput().readBoolean();
+		}catch(Exception ecc) {
+			JOptionPane.showMessageDialog(null,ecc.toString());
+			System.exit(-1);			
+		}
+	}
+
+	public void send() {
+		try {
+			frame.getOutput().writeInt(xBall);
+			frame.getOutput().writeInt(yBall);
+			frame.getOutput().writeInt(xPong1);
+			frame.getOutput().writeInt(yPong1);
+			frame.getOutput().writeInt(xPong2);
+			frame.getOutput().writeInt(yPong2);
+			frame.getOutput().writeInt(point1);
+			frame.getOutput().writeInt(point2);
+			frame.getOutput().writeBoolean(win1);
+			frame.getOutput().writeBoolean(win2);
+		}catch(Exception ecc) {
+			JOptionPane.showMessageDialog(null,ecc.toString());
+			System.exit(-1);					
+		}		
+	}
+
+	public void moveBall() {
+		xBall+= deltaBallX;
+		yBall+= deltaBallY;
+
+		if (xBall < 0) {
+			point2++;
+			try {
+				Thread.sleep(500);
+				xBall = frame.getWidth()/2;
+				yBall = frame.getHeight()/2;
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (xBall + sizeBall > frame.getWidth()) {
+			point1++;
+			try {
+				Thread.sleep(500);
+				xBall = frame.getWidth()/2 - sizeBall/2;
+				yBall = frame.getHeight()/2 - sizeBall/2;
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+		}
+
+		if (yBall < 0) {
+			deltaBallY = -deltaBallY;
+		}
+
+		if (yBall + sizeBall > frame.getHeight()) {
+			deltaBallY = -deltaBallY;
+		}
+
+		if (deltaBallX < 0 && xBall <= xPong1 + widthPong && (yBall + sizeBall > yPong1 && yBall < yPong1 + heightPong)) {
+			deltaBallX = -deltaBallX;
+		}
+
+		if (deltaBallX > 0 && xBall + sizeBall >= xPong2 && (yBall > yPong2 && yBall < yPong2 + heightPong)) {
+			deltaBallX = -deltaBallX;
+		}
+	}
+
+	public void movePong() {
+		if(upPong1 && yPong1>0) {
+			yPong1 -= deltaPong;
+		}
+		if(downPong1 && yPong1 < frame.getHeight() - heightPong) {
+			yPong1 += deltaPong;
+		}
+		if(upPong2 && yPong2>0) {
+			yPong2 -= deltaPong;
+		}
+		if(downPong2 && yPong2 < frame.getHeight() - heightPong) {
+			yPong2 += deltaPong;
+		}
+	}
+
+	public void checkVictory() {
+		if(point1 == victoryPoint) {
+			win1 = true;
+			wait = true;
+		}else if(point2 == victoryPoint) {
+			win2 = true;
+			wait = true;
+		}
+	}
+
+	public void paint(Graphics g) {
+		super.paintComponent(g);		
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+
+		g2.setColor(Color.RED);
+		g2.fillRect(0, 0, frame.getWidth(), frame.getHeight());
+
+		g2.setColor(Color.BLACK);
+		g2.fillRect(4, 4, frame.getWidth()-8, frame.getHeight()-8);
+
+		g2.setColor(Color.WHITE);
+		g2.setFont(new Font("Arial Black", Font.PLAIN, 20));
+		g2.drawString(""+point1, 5, 20);
+		g2.drawString(""+point2, frame.getWidth()-30, 20);
+
+		if(win1) {
+			g2.drawString("Player 1 wins", 30, frame.getHeight()/2);
+		}else if(win2) {
+			g2.drawString("Player 2 wins", 230, frame.getHeight()/2 );
+		}
+
+		g2.setColor(Color.RED);
+		g2.fillRect((frame.getWidth()/2)-2, 0, 4, frame.getHeight());
+		g2.fillOval(xBall,yBall,sizeBall,sizeBall);
+		g2.fillRoundRect(xPong1, yPong1, widthPong, heightPong, 10, 10);
+		g2.fillRoundRect(xPong2, yPong2, widthPong, heightPong, 10, 10);
+	}
+
+	public void keyPressed(KeyEvent e) {
+		int keyCode = e.getKeyCode();
+
+		if (keyCode == KeyEvent.VK_W) {
+			upPong1= true;
+		}
+		if (keyCode == KeyEvent.VK_S) {
+			downPong1= true;
+		}
+		if (keyCode == KeyEvent.VK_ESCAPE) {
+			System.exit(0);
+		}
+	}
+
+	public void keyReleased(KeyEvent e) {
+		int keyCode = e.getKeyCode();
+
+		if (keyCode == KeyEvent.VK_W) {
+			upPong1 = false;
+		}
+
+		if (keyCode == KeyEvent.VK_S) {
+			downPong1 = false;
+		}
+	}
+
+	public void keyTyped(KeyEvent e) {
+	}
+
+}

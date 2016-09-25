@@ -1,0 +1,68 @@
+package GoogleMaps;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Finestra extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JTextField jText1, jText2, jText3, jText4;
+	private JButton jButt;
+	
+	URL url;
+	
+	public Finestra() {
+		super("Google Maps API");
+		this.setPreferredSize(new Dimension(600, 600) );
+		final Container cont = this.getContentPane();
+		cont.setLayout(new FlowLayout());
+		JPanel b = new JPanel();
+		b.add(jText1 = new JTextField("Citta                            "));
+		b.add(jText2 = new JTextField("Via                              "));
+		b.add(jText3 = new JTextField("Numero civico                    "));
+		b.add(jText4 = new JTextField("Livello di zoom                  "));
+		b.add(jButt = new JButton("Cerca"));
+		jButt.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+//				creadUrl();
+				try {
+				url = new URL("http://maps.googleapis.com/maps/api/staticmap?center=0,0&zoom=5&size=600x525&sensor=false");
+				} catch (MalformedURLException ea) {
+					ea.printStackTrace();
+				}
+				System.out.println(url);
+				cont.add(new Pannello(url));
+//				repaint();
+			}
+        });      
+		cont.add(b);
+//		creadUrl();
+		
+		this.pack();
+		this.setLocationRelativeTo(null);
+		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.setResizable(false);
+		this.setVisible(true);
+	}	
+	
+	//fare un metodo per ottenere url senza usare ogni volta try e catch
+	public void creadUrl() {
+		try {
+			url = new URL("http://maps.googleapis.com/maps/api/staticmap?center=0,0&zoom=1&size=600x525&sensor=false");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+	}
+}

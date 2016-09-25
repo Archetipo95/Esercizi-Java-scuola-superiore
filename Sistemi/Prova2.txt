@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>OPPO</title>
+		<meta property="og:title" content="OPPO" />
+		<meta property="og:description" content="OPPO is a global technology brand, with a long history of serving customers in North America, Europe and Asia." />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://en.oppo.com/" />
+		<meta property="og:image" content="http://en.oppo.com/assets/img/opengraph/mainpage.jpg" />
+		<script type="text/javascript" src="/92a04a4cd5cb922a916dc093227aefc6/assets/js/head.min.js"></script>
+		<!--[if lt IE 9]>
+		<script src="/assets/js/html5shiv.min.js"></script>
+		<![endif]-->
+					<link href="/4e2f0ebb71b129efeb3ff5d0e8bb09ca/assets/css/combined.css?v2" rel="stylesheet">
+						<script type="text/javascript">var _gaq=_gaq||[];_gaq.push(['_setAccount','UA-36584794-1']);_gaq.push(['_trackPageview']);(function(){var ga=document.createElement('script');ga.type='text/javascript';ga.async=true;ga.src=('https:'==document.location.protocol?'https://ssl':'http://www')+'.google-analytics.com/ga.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(ga,s);})();</script>
+			</head>
+	<body class="">
+		<div class="container">
+			<header class="global navbar">
+				<nav class="navbar" role="navigation">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".menu-top-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<h3 class="logo"><a href="/" title="OPPO"><span class="i-logo">OPPO</span></a></h3>
+					</div>
+				
+					<div class="collapse navbar-collapse menu-top-collapse">
+						<nav class="menu-global-inline nav navbar-nav">
+							<ul>
+								<li><a href="/products/">Products</a></li>
+								<li><a href="/press/">Press</a></li>
+								<li><a href="/firmware/">Firmware</a></li>
+								<li><a href="/where-to-buy/">Where to Buy</a></li>
+								<li><a href="http://www.oppoforums.com/">Forums</a></li>
+							</ul>
+						</nav>
+					</div>
+				</nav>
+			</header>
+			</div>
+	<section class="showcase">
+		<div class="showcase-loader"><span class="i-spinner-big"></span><br>loading</div>
+		<ul class="container">
+			<li class="showcase-slide n1">
+				<div class="showcase-holder">
+					<div class="s-title">OPPO N1</div>
+					<div class="s-text">Return to Innovation</div>
+					<span class="s-button"><a class="btn btn-go btn-large" href="/products/n1/">Learn more</a></span>
+" alt="" /></span>
+" class="img-responsive" alt="" /></span>
+" class="img-responsive" alt="" /></span>
+					<span class="s-background"></span>
+				</div>
+			</li>
+			<li class="showcase-slide r819">
+				<div class="showcase-holder">
+					<div class="s-title">R819</div>
+					<div class="s-text">Convenience without compromise</div>
+					<span class="s-button"><a class="btn btn-go btn-large" href="/products/r819/">Learn more</a></span>
+					<span class="s-04"></span>
+					<span class="s-03"></span>
+					<span class="s-02"></span>
+					<span class="s-01"></span>
+					<span class="s-flare"></span>
+					<span class="s-background"></span>
+				</div>
+			</li>
+			<li class="showcase-slide find5">
+				<div class="showcase-holder">
+					<div class="s-title">Find 5</div>
+					<div class="s-text">When technology meets affection</div>
+					<span class="s-button"><a class="btn btn-go btn-large" href="/products/find5/">Learn more</a></span>
+					<span class="s-02"></span>
+					<span class="s-01"></span>
+					<span class="s-background"></span>
+				</div>
+			</li>
+		</ul>
+	</section>
+	<div class="container">
+		<div class="timer-line"></div>
+		<menu class="menu-horizontal-arrows">
+			<li class="active"><a href="#" data-target="#" class="showcase-switch dark" data-slide="1">N1</a></li>
+			<li><a href="#" data-target="#" class="showcase-switch dark" data-slide="2">R819</a></li>
+			<li><a href="#" data-target="#" class="showcase-switch dark" data-slide="3">Find 5</a></li>
+		</menu>
+		<div class="row teaser-line">
+			<div class="col-sm-4 col-lg-3">
+" /></a> 
+				<div class="margin-small visible-xs"></div>
+			</div>
+			<div class="col-sm-4 col-lg-3">
+" /></a>
+				<div class="margin-small visible-xs"></div>
+			</div>
+			<div class="col-sm-4 col-lg-3">
+" /></a>
+				<div class="margin-small visible-xs"></div>
+			</div>
+			<!--div class="col-sm-4 col-lg-3">
+" /></a> 
+				<div class="margin-small visible-xs"></div>
+			</div-->
+			<div class="col-sm-4 col-lg-3 visible-lg">
+" /></a>
+				<div class="margin-small visible-xs"></div>
+			</div>
+		</div>
+		<div class="images_preload">
+" alt="" />
+" alt="" />
+" alt="" />
+			
+" alt=""/>
+" alt=""/>
+" alt=""/>
+" alt=""/>
+" alt=""/>
+" alt=""/>
+			
+" alt=""/>
+" alt=""/>
+" alt=""/>
+		</div>
+			<footer>
+				<div class="row">
+					<div class="col-sm-8">
+						<menu class="tiny-menu">
+							<li class="menu-item dropdown">
+								<a class="iconlink16 dropdown-toggle" data-toggle="dropdown" data-target="#" href="#"><span class="i-globe"></span> Global</a>
+								<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
+									<li><a tabindex="-1" href="http://www.oppo.com/?q=index">中国</a></li>
+									<li><a tabindex="-1" href="http://oppothai.com">ประเทศไทย</a></li>
+									<li><a tabindex="-1" href="http://oppomobile.co.id">Indonesia</a></li>
+									<li><a tabindex="-1" href="http://oppo.ru/">Ро�?�?и�?</a></li>
+									<li><a tabindex="-1" href="http://oppomobile.vn/">Việt Nam</a></li>
+									<li class="disabled"><a tabindex="-1" href="http://en.oppo.com/" class="active">Global</a></li>
+								</ul>
+							</li>
+							<li class="menu-item"><a href="/about/">About OPPO</a></li>
+							<li class="menu-item"><a href="/careers/">Careers</a></li>
+							<li class="menu-item"><a href="/contact/">Contact Us</a></li>
+						</menu>
+						<div class="copyright small">
+							Copyright © 2013 OPPO. All rights reserved.
+													</div>
+					</div>
+					<div class="col-sm-4">
+						<div class="margin-small visible-xs"></div>
+						<menu class="menu-pointers">
+							<li><a href="https://www.facebook.com/Oppo"><span class="i-facebook">facebook</span></a></li>
+							<li><a href="https://twitter.com/oppo"><span class="i-twitter">twitter</span></a></li>
+							<li><a href="http://www.youtube.com/oppoofficial"><span class="i-youtube">YouTube</span></a></li>
+							<li><a href="http://instagram.com/oppo_mobile"><span class="i-instagram">Instagram</span></a></li>
+							<li><a href="https://plus.google.com/112434616205326385174"><span class="i-google">Google+</span></a></li>
+						</menu>
+					</div>
+				</div>
+			</footer>
+		</div>
+							<script src="/996c1da0a506423607efd1b80b93b762/assets/js/combined.js?v2"></script>
+																		</body>
+</html>

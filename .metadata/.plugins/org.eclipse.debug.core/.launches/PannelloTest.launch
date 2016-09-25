@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.jdt.launching.javaApplet">
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Applet/src/Esempi/PannelloTest.java"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="1"/>
+</listAttribute>
+<intAttribute key="org.eclipse.jdt.launching.APPLET_HEIGHT" value="200"/>
+<stringAttribute key="org.eclipse.jdt.launching.APPLET_NAME" value="Prova titolo"/>
+<mapAttribute key="org.eclipse.jdt.launching.APPLET_PARAMETERS">
+<mapEntry key="cognome" value="maki"/>
+<mapEntry key="nome" value="Martin"/>
+</mapAttribute>
+<intAttribute key="org.eclipse.jdt.launching.APPLET_WIDTH" value="200"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="Esempi.PannelloTest"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="Applet"/>
+</launchConfiguration>

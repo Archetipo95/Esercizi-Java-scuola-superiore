@@ -1,0 +1,22 @@
+package GoogleMaps;
+import java.net.*;
+
+import javax.swing.*;
+
+import java.awt.*;
+
+public class Pannello extends JPanel {
+	private static final long serialVersionUID = 1L;
+	
+	URL url;
+	
+	public void paintComponent(Graphics g, URL url) {
+		super.paintComponent(g);
+		this.url = url;
+		setPreferredSize(new Dimension(600,600));
+		if(url != null){
+			Image immage = new ImageIcon(url).getImage();
+			g.drawImage(immage, 0, 0, null);
+		}
+	}
+}

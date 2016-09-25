@@ -1,0 +1,74 @@
+package GoogleMaps;
+
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.Spring;
+import javax.swing.SpringLayout;
+
+public class Impostazioni implements ActionListener{
+	
+	JTextField text1, text2, text3, text4;
+	JButton cerca;
+	
+	public Impostazioni() {
+		JFrame win = new JFrame("Impostazioni");
+		win.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+//		Container container = win.getContentPane();
+//		container.setLayout(new SpringLayout());
+		
+		Container contentPane = win.getContentPane();
+        SpringLayout layout = new SpringLayout();
+		SpringLayout.Constraints  contentPaneCons = layout.getConstraints(contentPane);
+		contentPaneCons.setX(Spring.sum(Spring.constant(5),
+		                          contentPaneCons
+		                          .getConstraint(SpringLayout.WEST)));
+		contentPaneCons.setY(Spring.sum(Spring.constant(5),
+		                          contentPaneCons
+		                          .getConstraint(SpringLayout.NORTH)));
+		
+		container.add(new JLabel("Citta: "));
+        container.add(new JTextField("Text field", 15));
+		
+//		text1 = new JTextField("          ");
+//		container.add(text1);
+//		
+//		text2 = new JTextField("          ");
+//		container.add(text2);
+//		
+//		text3 = new JTextField("          ");
+//		container.add(text3);
+//		
+//		text4 = new JTextField("          ");
+//		container.add(text4);
+		
+		cerca = new JButton("Cerca");
+		cerca.addActionListener(this);
+		container.add(cerca);
+
+		win.setSize(400,300);
+		win.setResizable(false);
+		win.setLocationRelativeTo(null);
+		win.pack();
+		win.setVisible(true);
+	}
+	
+	
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		System.out.println("Ciao");
+		
+	}
+	
+	public static void main(String args[]){
+		new Impostazioni();
+	}
+}

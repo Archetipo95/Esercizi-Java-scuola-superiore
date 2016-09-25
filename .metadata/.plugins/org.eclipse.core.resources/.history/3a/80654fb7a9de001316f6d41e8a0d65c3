@@ -1,0 +1,45 @@
+package GoogleMaps;
+import java.awt.Container;
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+import javax.swing.JFrame;
+
+public class Mappa {
+	public static void main(String[] args) {
+		String via,citta;
+		int ncivico,zoom;
+		Scanner tast = new Scanner(System.in);
+		System.out.println("Inserisci il nome della citta':" );
+		citta = tast.nextLine();
+		System.out.println("Inserisci il nome della via:");
+		via = tast.nextLine();
+		System.out.println("Inserisci il numero civico:");
+		ncivico = tast.nextInt();
+		System.out.println("Inserisci lo zoom (Numero tra 0 e 21):");
+		zoom = tast.nextInt();
+		String linea = via+","+ncivico+"+"+citta;
+		for(int i = 0;i<linea.length();i++){
+			if(linea.charAt(i)==' '){
+				linea = linea.substring(0,i)+"+"+linea.substring(i+1,linea.length());
+			}
+		}
+		try{
+			URL url = new URL("http://maps.googleapis.com/maps/api/staticmap?center="+
+					linea+"&zoom="+zoom+"&size=600x600&maptype=hybrid&sensor=false");
+			System.out.println(url);
+			JFrame win = new JFrame("Mappa");
+			win.setDefaultCloseOperation(win.EXIT_ON_CLOSE);
+			Container c = win.getContentPane();
+			c.add(new PannelloImmagini(url));
+			win.pack();
+			win.setVisible(true);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

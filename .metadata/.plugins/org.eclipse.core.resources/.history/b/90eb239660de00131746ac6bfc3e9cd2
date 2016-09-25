@@ -1,0 +1,61 @@
+package GoogleMaps;
+
+import java.awt.Container;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+public class Finestra extends JFrame{
+	private static final long serialVersionUID = 1L;
+	
+	private JTextField jText1, jText2, jText3, jText4;
+	private JButton jButt = new JButton("Cerca");;
+	
+	URL url;
+	
+	public Finestra() {
+		JFrame f = new JFrame("Google Maps API");
+		f.setPreferredSize(new Dimension(600, 600) );
+		Container cont = f.getContentPane();
+		cont.setLayout(new FlowLayout());
+		JPanel b = new JPanel();
+		b.add(jText1 = new JTextField("Citta                            "));
+		b.add(jText2 = new JTextField("Via                              "));
+		b.add(jText3 = new JTextField("Numero civico                    "));
+		b.add(jText4 = new JTextField("Livello di zoom                  "));
+//		jButt = new JButton("Cerca");
+		b.add(jButt);
+		jButt.addActionListener(this);    
+		cont.add(b);
+		creadUrl();
+		cont.add(new Pannello(url));
+		f.pack();
+		f.setLocationRelativeTo(null);
+		f.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		f.setResizable(false);
+		f.setVisible(true);
+	}	
+	
+	public void actionPerformed(ActionEvent e) {
+		creadUrl();
+		repaint();
+	}
+	
+	//fare un metodo per ottenere url senza usare ogni volta try e catch
+	public void creadUrl() {
+		try {
+			url = new URL("http://maps.googleapis.com/maps/api/staticmap?center=Berkeley,CA&zoom=14&size=400x400&sensor=false");
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
+	}
+}

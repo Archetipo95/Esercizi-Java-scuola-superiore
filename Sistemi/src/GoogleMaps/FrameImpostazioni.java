@@ -1,0 +1,180 @@
+package GoogleMaps;
+
+import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JRadioButton;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.Color;
+import java.awt.Window.Type;
+
+public class FrameImpostazioni extends JFrame {
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField textLuogo;
+	private JTextField textIndirizzo;
+	private JTextField textNCivico;
+	private JTextField textLZoom;
+
+	private String link, link2, strzoom, tipoTerreno = "Roadmap";
+
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					FrameImpostazioni frame = new FrameImpostazioni();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	public FrameImpostazioni() {
+		setType(Type.UTILITY);
+		setTitle("Impostazioni");
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 50, 254, 223);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+
+		JLabel lblLuogo = new JLabel("Luogo:");
+
+		JLabel lblIndirizzo = new JLabel("Indirizzo:");
+
+		JLabel lblNCivico = new JLabel("Numero civico:");
+
+		JLabel lblLZoom = new JLabel("Livello zoom:");
+
+		textLuogo = new JTextField();
+		textLuogo.setColumns(10);
+
+		textIndirizzo = new JTextField();
+		textIndirizzo.setColumns(10);
+
+		textNCivico = new JTextField();
+		textNCivico.setColumns(10);
+
+		textLZoom = new JTextField();
+		textLZoom.setColumns(10);
+
+		JButton Bottone = new JButton("Cerca");
+		Bottone.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				if(!(textLuogo.getText().equals(""))) {
+					link = textLuogo.getText();
+				}
+				if(!(textLuogo.getText().equals("") && textLuogo.getText().equals(""))) {
+					link = textLuogo.getText() + "," + textIndirizzo.getText();
+				}
+				if(!(textLuogo.getText().equals("") && textLuogo.getText().equals("") && textLuogo.getText().equals(""))) {
+					link = textLuogo.getText() + "," + textIndirizzo.getText() + "," + textNCivico.getText();
+				}
+
+				try {
+					int zoom = Integer.parseInt(textLZoom.getText());
+					strzoom = ""+zoom;
+				}catch(NumberFormatException e) {
+					JOptionPane.showMessageDialog(null,"Livello zoom errato: inserire numero intero da 1 a 21");
+					strzoom = "1";
+				}
+				try {
+					link2=link.replace(" ", "");
+				}catch(NullPointerException e) {
+					JOptionPane.showMessageDialog(null,"Nessun luogo inserito!");
+					link2="0,0";
+					strzoom = "1";
+				}
+				if(tipoTerreno.equalsIgnoreCase("Roadmap")) {
+					FrameGoogleMaps frmgl = new FrameGoogleMaps(link2, strzoom, tipoTerreno);
+				}
+				if(tipoTerreno.equalsIgnoreCase("Satellite")) {
+					FrameGoogleMaps frmgl = new FrameGoogleMaps(link2, strzoom, tipoTerreno);
+				}
+				if(tipoTerreno.equalsIgnoreCase("Terrain")) {
+					FrameGoogleMaps frmgl = new FrameGoogleMaps(link2, strzoom, tipoTerreno);
+				}
+				if(tipoTerreno.equalsIgnoreCase("Hybrid")) {
+					FrameGoogleMaps frmgl = new FrameGoogleMaps(link2, strzoom, tipoTerreno);
+				}
+			}
+		});
+
+		JComboBox comboBoxTerreno = new JComboBox();
+		comboBoxTerreno.setMaximumRowCount(4);
+		comboBoxTerreno.setModel(new DefaultComboBoxModel(new String[] {"Roadmap", "Satellite", "Terrain", "Hybrid"}));
+		comboBoxTerreno.setSelectedIndex(0);
+		comboBoxTerreno.setToolTipText("");
+		comboBoxTerreno.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JComboBox cb = (JComboBox)e.getSource();
+				tipoTerreno = (String)cb.getSelectedItem();
+				tipoTerreno = tipoTerreno.toLowerCase();      
+			}
+		});
+		GroupLayout gl_contentPane = new GroupLayout(contentPane);
+		gl_contentPane.setHorizontalGroup(
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(Bottone, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(comboBoxTerreno, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblLuogo)
+												.addComponent(lblIndirizzo)
+												.addComponent(lblNCivico)
+												.addComponent(lblLZoom))
+												.addGap(26)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
+														.addComponent(textLZoom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+														.addComponent(textNCivico, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+														.addComponent(textIndirizzo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+														.addComponent(textLuogo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))))
+														.addContainerGap(153, Short.MAX_VALUE))
+				);
+		gl_contentPane.setVerticalGroup(
+				gl_contentPane.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_contentPane.createSequentialGroup()
+						.addContainerGap()
+						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+								.addComponent(lblLuogo)
+								.addComponent(textLuogo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+								.addPreferredGap(ComponentPlacement.RELATED)
+								.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+										.addComponent(lblIndirizzo)
+										.addComponent(textIndirizzo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+												.addComponent(lblNCivico)
+												.addComponent(textNCivico, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+												.addPreferredGap(ComponentPlacement.RELATED)
+												.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+														.addComponent(lblLZoom)
+														.addComponent(textLZoom, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+														.addPreferredGap(ComponentPlacement.RELATED)
+														.addComponent(comboBoxTerreno, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+														.addPreferredGap(ComponentPlacement.UNRELATED)
+														.addComponent(Bottone)
+														.addGap(25))
+				);
+		contentPane.setLayout(gl_contentPane);
+	}
+}

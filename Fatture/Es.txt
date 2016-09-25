@@ -1,0 +1,38 @@
+5 novembre 2013 - classe 4ai
+
+Obiettivo: gestione di alcuni dati "contabili" di una azienda
+Si chiede di registrare i dati dei clienti e dei dipendenti dell'azienda.
+
+I clienti possono essere privati o aziende (interfaccia Contatto).
+NOTA: per fatturare serve una denominazione e un codice fiscale o partita IVA;
+nel caso di cliente privato la denominazione è cognome + nome, e il codice è il 
+codice fiscale; nel caso di azienda la denominazione è la ragione sociale e il
+codice per fatturazione è la partita IVA.
+
+Le fatture hanno un Contatto, un numero e un importo (magari anche la data).
+
+I dipendenti hanno cognome, nome e stipendio.
+
+Riassumendo:
+Interfaccia Contatto denominazione, codice fatturazione - OK
+Classe astratta Persona cognome, nome - OK
+Classe Azienda ragione sociale, partita iva implementa Contatto - OK 
+Classe Privato deriva da persona e aggiunge codice fiscale implementa Contatto - OK
+Classe Dipendente deriva da persona e aggiunge stipendio - OK
+Classe Fattura ha contatto, numero, (data), importo - contatto deve essere di tipo Contatto
+"vendite" è un elenco di fatture - OK
+"clienti" è un elenco di contatti - OK
+"dipendenti" è un elenco di . . . - OK
+
+Azioni (minimo) richieste:
+1 - aggiunta di un contatto privato/azienda
+2 - elenco dei contatti esistenti
+3 - aggiunta di una fattura
+4 - elenco delle fatture / totale
+5 - aggiunta di un dipendente
+6 - elenco dei dipendenti esistenti
+
+Opzioni desiderabili
+a - Mantenere elenchi ordinati utilizzando collezioni ordinate e interfaccia Comparable
+b - estrarre un elenco (ordinato) di "persone" che comprende privati e dipendenti
+c - leggere da / salvare su file opportuno/i
